@@ -47,6 +47,49 @@ namespace DrawingRoi
             Selecting = true;
         }
 
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(Selecting)
+            {
+                MouseDown = true;
+                StartROI = e.Location;
+            }
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(Selecting)
+            {
+                int width = Math.Max(StartROI.X, e.X) - Math.Min(StartROI.X, e.X);
+                int height = Math.Max(StartROI.Y, e.Y) - Math.Min(StartROI.Y, e.Y);
+                rect = new Rectangle(Math.Min(StartROI.X, e.X),
+                    Math.Min(StartROI.Y, e.Y),
+                    width,
+                    height);
+                Refresh();
+            }
+        }
+
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+            if(MouseDown)
+            {
+                using (Pen pen = new Pen(Color.Red, 3))
+                {
+                    e.Graphics.DrawRectangle(pen, rect);    
+                }
+            }
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if(Selecting)
+            {
+                Selecting = false;
+                MouseDown = false;
+            }
+        }
+
         private void AddImage(Image<Bgr, byte> img, string keyname)
         {
             if (!treeView1.Nodes.ContainsKey(keyname))
