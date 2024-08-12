@@ -90,6 +90,43 @@ namespace DrawingRoi
             }
         }
 
+        private void selectRegionROIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (pictureBox1.Image == null)
+                    return;
+                if (rect == Rectangle.Empty)
+                    return;
+
+                var img = new Bitmap(pictureBox1.Image).ToImage<Bgr, byte>();
+                img.ROI= rect;
+                var imgROI = img.Copy();
+                img.ROI = Rectangle.Empty;
+
+                pictureBox1.Image=imgROI.ToBitmap();
+                AddImage(imgROI, "ROI Image");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            try
+            {
+                pictureBox1.Image = imgList[e.Node.Text].AsBitmap();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void AddImage(Image<Bgr, byte> img, string keyname)
         {
             if (!treeView1.Nodes.ContainsKey(keyname))

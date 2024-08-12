@@ -35,6 +35,7 @@
             this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.processROIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectROIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectRegionROIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -70,7 +71,7 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -85,17 +86,25 @@
             // processROIToolStripMenuItem
             // 
             this.processROIToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.selectROIToolStripMenuItem});
+            this.selectROIToolStripMenuItem,
+            this.selectRegionROIToolStripMenuItem});
             this.processROIToolStripMenuItem.Name = "processROIToolStripMenuItem";
-            this.processROIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.processROIToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.processROIToolStripMenuItem.Text = "Process ROI";
             // 
             // selectROIToolStripMenuItem
             // 
             this.selectROIToolStripMenuItem.Name = "selectROIToolStripMenuItem";
-            this.selectROIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selectROIToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.selectROIToolStripMenuItem.Text = "Select ROI";
             this.selectROIToolStripMenuItem.Click += new System.EventHandler(this.selectROIToolStripMenuItem_Click);
+            // 
+            // selectRegionROIToolStripMenuItem
+            // 
+            this.selectRegionROIToolStripMenuItem.Name = "selectRegionROIToolStripMenuItem";
+            this.selectRegionROIToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.selectRegionROIToolStripMenuItem.Text = "Select region ROI";
+            this.selectRegionROIToolStripMenuItem.Click += new System.EventHandler(this.selectRegionROIToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 
@@ -133,6 +142,7 @@
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(130, 420);
             this.treeView1.TabIndex = 0;
+            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             // 
             // panel2
             // 
@@ -191,6 +201,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selectRegionROIToolStripMenuItem;
     }
 }
 
